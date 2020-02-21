@@ -1,6 +1,8 @@
 const fetch = require("node-fetch")
 const queryString = require("query-string")
 
+window.gnewsquery = "cannabis south africa";
+
 exports.onPreInit = () => {
     console.log("Testing...")
   }
@@ -37,20 +39,17 @@ exports.sourceNodes = (
         return nodeData
     }
 
-    // plugin code goes here...
-    // console.log("Testing gatsby-source-liferay plugin", configOptions)
+    // const apikey = "93cfbf47a0e44c71ba78a52b29c16ab6"
+    const apikey = process.env.gnewsapikey;
+    const query = window.gnewsquery;
 
-    // Construct Liferay API URL for structured-content
-    // const apiUrl = `http://${configOptions.host}/o/headless-delivery/v1.0/sites/${configOptions.siteId}/structured-contents/`
-
-const apikey = "93cfbf47a0e44c71ba78a52b29c16ab6"
-const url = "http://newsapi.org/v2/everything?q=cannabis+south+africa&apiKey=" + apikey;
-const config = {
-    method: "GET",
-    headers: {
-        "Content-Type": "application/json"
+    const url = "http://newsapi.org/v2/everything?q="+ query +"&apiKey=" + apikey;
+    const config = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
     }
-}
 
 
 
@@ -74,7 +73,7 @@ const config = {
 
             data.articles.forEach(content => {
 
-                // console.log("Gnews article - cannabis south africa : ", content.title)
+                // console.log("Gnews article: ", content.title)
 
                 // Process the data to match the structure of a Gatsby node
                 const nodeData = processContent(content)
@@ -88,26 +87,5 @@ const config = {
 
         })
 
-        
-        // // Fetch a response from the apiUrl
-        // fetch(apiUrl, init)
-        // // Parse the response as JSON
-        //     .then(response => response.json())
-        //     // Process the JSON data into a node
-        //     .then(data => {
-        //         // For each query result (or 'items')
-        //         data.items.forEach(content => {
-        //             console.log("Liferay article: ", content.title)
-
-        //             // Process the data to match the structure of a Gatsby node
-        //             const nodeData = processContent(content)
-
-        //             //console.log("nodeData--> ", nodeData);
-
-        //             // Use Gatsby's createNode helper to create a node from the node data
-        //             createNode(nodeData)
-        //         })
-
-        //     })
     )
 }
