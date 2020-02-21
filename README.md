@@ -2,9 +2,28 @@
 
 ### Fetch content from Google News and convert to Gatsby post
 
-...
+This plugin allows Gatsby to fetch content from Google News and convert them to posts.
+
+`allNews {
+                edges {
+                    node {
+                        title
+                        description
+                        author
+                        content
+                        id
+                        slug
+                        uid
+                    }
+                }
+            }
+            `
+
 
 ## About Quantacom
+
+Quantacom is a technology development studio developing software & hardware products for a range of markets.
+
 
 #### Email
 quantacomsoftware@gmail.com
