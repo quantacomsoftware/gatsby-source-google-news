@@ -2,10 +2,11 @@ const fetch = require("node-fetch")
 const queryString = require("query-string")
 
 window.gnewsquery = "cannabis south africa";
+process.env.gnewsapikey = "93cfbf47a0e44c71ba78a52b29c16ab6";
 
 exports.onPreInit = () => {
-    console.log("Testing...")
-  }
+    console.log("on Pre Init ...")
+}
 
 exports.sourceNodes = (
     {actions, createNodeId, createContentDigest},
@@ -25,7 +26,6 @@ exports.sourceNodes = (
             slug: `news/${nodeId}.html`,
             id: nodeId,
             uid:  nodeId,
-            // title: content.title,
             parent: null,
             children: [],
             internal: {
@@ -35,11 +35,9 @@ exports.sourceNodes = (
                 contentDigest: createContentDigest(content),
             },
         })
-        // console.log('nodeData',nodeData)
         return nodeData
     }
 
-    // const apikey = "93cfbf47a0e44c71ba78a52b29c16ab6"
     const apikey = process.env.gnewsapikey;
     const query = window.gnewsquery;
 
@@ -50,8 +48,6 @@ exports.sourceNodes = (
             "Content-Type": "application/json"
         }
     }
-
-
 
     const init = {
         method: 'GET',
@@ -66,20 +62,14 @@ exports.sourceNodes = (
     return (
 
         fetch(url).then(res => {
+            
             return res.json()
+
         }).then(data => {
 
-            // console.log('** News ', data)
-
             data.articles.forEach(content => {
-
-                // console.log("Gnews article: ", content.title)
-
                 // Process the data to match the structure of a Gatsby node
                 const nodeData = processContent(content)
-
-                console.log("nodeData--> ", nodeData);
-
                 // Use Gatsby's createNode helper to create a node from the node data
                 // console.log('nodeData',nodeData)
                 createNode(nodeData)
