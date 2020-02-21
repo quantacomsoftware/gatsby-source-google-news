@@ -42,21 +42,6 @@ exports.sourceNodes = (
     const query = window.gnewsquery;
 
     const url = "http://newsapi.org/v2/everything?q="+ query +"&apiKey=" + apikey;
-    const config = {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json"
-        }
-    }
-
-    const init = {
-        method: 'GET',
-        headers: {
-            'Accept': 'application/json',
-            'Authorization': `Basic ${configOptions.authKey}`
-        }
-    }
-
 
     // Gatsby expects sourceNodes to return a promise
     return (
