@@ -2,9 +2,14 @@
 
 ### Fetch content from Google News and convert to Gatsby post
 
-Email: quantacomsoftware@gmail.com
+...
 
-Services: 
+## About Quantacom
+
+#### Email
+quantacomsoftware@gmail.com
+
+#### Services 
 
 - UI Development
 - Nodejs development
@@ -14,7 +19,7 @@ Services:
 - Prismic CMS
 
 
-Business services:
+#### Business services
 
 - Business Architecture & Design
 - Business Strategy Design
@@ -25,13 +30,13 @@ Business services:
 - Direct Marketing Services : Pay Per Click, Social Media
 
 
-Cost:
+#### Cost
 
 - Milestone pricing : POA
 - Hourly pricing : ZAR R750 / USD 50.00
 
 
-Modules in development (web and mobile):
+#### Modules in development (web and mobile)
 
 - Auth login flow
 - User onboarding flow
